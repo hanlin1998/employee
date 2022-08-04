@@ -1,5 +1,8 @@
 package com.bean;
 
+import javax.persistence.Table;
+
+@Table(name = "admin")
 public class Admin {
 
     private String adminName;
