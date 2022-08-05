@@ -28,4 +28,24 @@
         from departments
     </select>
 
+    <select id="selectByPrimaryKey" resultMap="base_map">
+        select
+        <include refid="base_sql"></include>
+        from departments
+        where Department_id = #{deptId}
+    </select>
+
+    <update id="updateDept">
+        update departments
+        set Department_name = #{deptName},
+            Location_name   = #{deptLocation}
+        where Department_id = #{deptId}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from departments
+        where Department_id = #{deptId}
+    </delete>
+
 </mapper>

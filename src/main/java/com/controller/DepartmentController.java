@@ -16,6 +16,7 @@ public class DepartmentController {
     @Autowired
     private DepartmentServiceImpl departmentServiceImpl;
 
+    //查询全部部门
     @RequestMapping("/selectAll")
     public String SelectAllDept(Model model) {
         List<Department> departments = this.departmentServiceImpl.selectAllDept();
@@ -23,6 +24,7 @@ public class DepartmentController {
         return "admin/searchDept";
     }
 
+    //添加部门
     @RequestMapping("/addDept")
     public String addDept(Department department, Model model) {
         int resout = this.departmentServiceImpl.addDept(department);
@@ -36,7 +38,31 @@ public class DepartmentController {
             }
             return "admin/addDept";
         }
+    }
 
+    //修改部门
+    @RequestMapping("/selectOneDept")
+    public String selectOneDept(int deptId, Model model) {
+        model.addAttribute("dept", this.departmentServiceImpl.selectByPrimaryKey(deptId));
+        return "admin/updateDept";
+    }
+
+    @RequestMapping("/updateDept")
+    public String updateDept(Department department, Model model) {
+        int resout = this.departmentServiceImpl.updateDept(department);
+        if (resout == 1) {
+            return "redirect:selectAll";
+        } else {
+            model.addAttribute("str", "修改失败，请重新尝试！");
+            model.addAttribute("dept", this.departmentServiceImpl.selectByPrimaryKey(department.getDeptId()));
+            return "admin/updateDept";
+        }
+    }
+
+    @RequestMapping("/deleteByPrimaryKey")
+    public String deleteByPrimaryKey(Integer deptId) {
+        this.departmentServiceImpl.deleteByPrimaryKey(deptId);
+        return "redirect:selectAll";
     }
 
 }

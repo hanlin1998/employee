@@ -27,4 +27,19 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         return this.departmentMapper.addDept(department);
     }
+
+    @Override
+    public Department selectByPrimaryKey(int deptId) {
+        return this.departmentMapper.selectByPrimaryKey(deptId);
+    }
+
+    @Override
+    public int updateDept(Department department) {
+        return this.departmentMapper.updateDept(department);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(int deptId) {
+        return this.departmentMapper.deleteByPrimaryKey(deptId);
+    }
 }

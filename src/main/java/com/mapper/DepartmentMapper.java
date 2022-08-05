@@ -1,11 +1,10 @@
 package com.mapper;
 
 import com.bean.Department;
-import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
-public interface DepartmentMapper extends Mapper<Department> {
+public interface DepartmentMapper {
 
     List<Department> selectAllDept();
 
@@ -14,4 +13,10 @@ public interface DepartmentMapper extends Mapper<Department> {
 
     //查询主键
     List<Integer> selectDeptId();
+
+    Department selectByPrimaryKey(int deptId);
+
+    int updateDept(Department department);
+
+    int deleteByPrimaryKey(int deptId);
 }

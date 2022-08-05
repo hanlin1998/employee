@@ -11,6 +11,16 @@
     <title>部门数据</title>
     <link rel="stylesheet" type="text/css" href="${path }/css/style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        // 删除确认
+        function del(deptId) {
+            var flag = window.confirm("你确定要删除" + deptId + "号部门？")
+            if (flag) {
+                location.href = $('#path').val() + "/department/deleteByPrimaryKey?deptId=" + deptId;
+            }
+        }
+    </script>
 </head>
 <body>
 <%--页面头部--%>
@@ -34,8 +44,8 @@
                             <th width="25%" bgcolor="#FFCC00">${dept.deptName}</th>
                             <th width="37%" bgcolor="#FFCC00">${dept.deptLocation}</th>
                             <th width="21%" bgcolor="#FFCC00">
-                                <a href="">修改</a>
-                                <a href="">删除</a>
+                                <a href="${path}/department/selectOneDept?deptId=${dept.deptId}">修改</a>
+                                <a href="javascript:del(${dept.deptId})">删除</a>
                             </th>
                         </tr>
                     </c:forEach>
@@ -45,6 +55,7 @@
         </td>
     </tr>
 </table>
+<input type="hidden" value="${path}" id="path">
 <%--页面尾部--%>
 <%@include file="tail.jsp" %>
 </body>
