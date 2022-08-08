@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.JobMapper">
+
+    <sql id="base_sql">Job_id
+    ,Job_title,Min_salary,Max_salary</sql>
+
+    <resultMap id="base_map" type="com.bean.Job">
+        <id column="Job_id" property="jobId"></id>
+        <result column="Job_title" property="jobTitle"></result>
+        <result column="Min_salary" property="minSal"></result>
+        <result column="Max_salary" property="maxSal"></result>
+    </resultMap>
+
+    <select id="selectAll" resultMap="base_map">
+        select
+        <include refid="base_sql"></include>
+        from jobs
+    </select>
+
+    <insert id="addJob">
+        insert into jobs(Job_title, Min_salary, Max_salary)
+        values (#{jobTitle}, #{minSal}, #{maxSal})
+    </insert>
+
+    <update id="updateJob">
+        update jobs
+        set Job_title  = #{jobTitle},
+            Min_salary = #{minSal},
+            Max_salary = #{maxSal}
+        where Job_id = #{jobId}
+    </update>
+
+    <select id="selectByPrimaryKey" resultMap="base_map">
+        select
+        <include refid="base_sql"></include>
+        from jobs
+        where Job_id = #{jobId}
+    </select>
+
+    <delete id="deleteByPrimaryKey">
+        delete
+        from jobs
+        where Job_id = #{jobId}
+    </delete>
+
+</mapper>
