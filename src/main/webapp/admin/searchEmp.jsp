@@ -86,7 +86,7 @@
                     </td>
                 </tr>
             </table>
-            <p><a href="${path}/AddEmployeeSelectServlet">增加新员工</a></p>
+            <p><a href="${path}/employee/addEmp">增加新员工</a></p>
         </td>
     </tr>
 </table>

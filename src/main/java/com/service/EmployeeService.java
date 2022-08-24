@@ -10,4 +10,6 @@ public interface EmployeeService {
 
     PageInfo<Employee> selectAll(int pageNum, int pageSize);
 
+    int insertEmp(Employee employee);
+
 }

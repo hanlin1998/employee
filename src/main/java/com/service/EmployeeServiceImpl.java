@@ -21,4 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         PageInfo<Employee> pageInfoEmp = new PageInfo<>(this.employeeMapper.selectAll());
         return pageInfoEmp;
     }
+
+    @Override
+    public int insertEmp(Employee employee) {
+        return this.employeeMapper.insertEmp(employee);
+    }
 }

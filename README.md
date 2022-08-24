@@ -8,6 +8,7 @@
 4.使用pageHelper分页插件，在jsp页面实现集合的遍历输出，通过javascript实现页面的跳转。
 5.在jsp页面上将date数据格式化。
 6.在mapper文件中使用将属性对象映射。
+7.在页面向后台传输Date数据时使用了DateTimeFormat注解，实现将日期数据格式转化成需要的格式。
 
 # 遇到的问题
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -56,6 +57,12 @@ public class JobController {
     public String deleteByPrimaryKey(int jobId) {
         this.jobService.deleteByPrimaryKey(jobId);
         return "redirect:selectAll";
+    }
+
+    @RequestMapping("/selectByPrimaryKeyJson")
+    @ResponseBody
+    public Job selectByPrimaryKeyJson(int jobId, Model model) {
+        return this.jobService.selectByPrimaryKey(jobId);
     }
 
 }

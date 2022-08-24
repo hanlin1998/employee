@@ -1,18 +1,18 @@
 $(function() {
-	$('#job_id').change(function() {
-		if ($('#job_id').val() == 0) {
-			$('#min_salary').val(0);
-			$('#max_salary').val(0);
+	$('#jobId').change(function() {
+		if ($('#jobId').val() == 0) {
+			$('#minSal').val(0);
+			$('#maxSal').val(0);
 		} else {
 			$.ajax({
 				async: true,
 				type: 'get',
-				url: $('#path').val() + '/SelectJobByIdServlet',
+				url: $('#path').val() + '/job/selectByPrimaryKeyJson',
 				dataType: 'json',
-				data: { job_id: $('#job_id').val() },
+				data: { jobId: $('#jobId').val() },
 				success: function(data) {
-					$('#min_salary').val(data.minSal);
-					$('#max_salary').val(data.maxSal);
+					$('#minSal').val(data.minSal);
+					$('#maxSal').val(data.maxSal);
 				},
 				error: function(XMLHttpRequest) {
 					alert(XMLHttpRequest.status);

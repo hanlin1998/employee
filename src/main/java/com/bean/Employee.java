@@ -1,5 +1,7 @@
 package com.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -9,6 +11,7 @@ public class Employee {
     private String empName;
     private String email;
     private String phone;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date hireDate;
     private int jobId;
     private int salary;

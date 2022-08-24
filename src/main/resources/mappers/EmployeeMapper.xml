@@ -26,4 +26,10 @@
         from employees
     </select>
 
+    <insert id="insertEmp">
+        insert into employees
+        (Emp_name, Email, Phone_number, Hire_date, Job_id, Salary, Department_id)
+        values (#{empName}, #{email}, #{phone}, #{hireDate}, #{jobId}, #{salary}, #{deptId})
+    </insert>
+
 </mapper>
