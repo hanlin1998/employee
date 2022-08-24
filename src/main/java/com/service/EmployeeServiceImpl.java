@@ -26,4 +26,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     public int insertEmp(Employee employee) {
         return this.employeeMapper.insertEmp(employee);
     }
+
+    @Override
+    public int deleteEmp(int empId) {
+        return this.employeeMapper.deleteEmp(empId);
+    }
+
+    @Override
+    public Employee selectByPrimaryKey(int empId) {
+        return this.employeeMapper.selectByPrimaryKey(empId);
+    }
+
+    @Override
+    public int updateEmp(Employee employee) {
+        return this.employeeMapper.updateEmp(employee);
+    }
 }

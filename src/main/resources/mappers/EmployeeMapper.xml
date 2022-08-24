@@ -32,4 +32,29 @@
         values (#{empName}, #{email}, #{phone}, #{hireDate}, #{jobId}, #{salary}, #{deptId})
     </insert>
 
+    <delete id="deleteEmp">
+        delete
+        from employees
+        where Employee_id = #{empId}
+    </delete>
+
+    <select id="selectByPrimaryKey" resultMap="base_map">
+        select
+        <include refid="base_sql"></include>
+        from employees
+        where Employee_id = #{empId}
+    </select>
+
+    <update id="updateEmp">
+        update employees
+        set Emp_name      = #{empName},
+            Email         = #{email},
+            Phone_number  = #{phone},
+            Hire_date     = #{hireDate},
+            Job_id        = #{jobId},
+            Salary        = #{salary},
+            Department_id = #{deptId}
+        where Employee_id = #{empId}
+    </update>
+
 </mapper>

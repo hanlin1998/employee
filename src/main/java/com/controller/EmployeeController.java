@@ -47,4 +47,25 @@ public class EmployeeController {
             return "redirect:addEmp";
         }
     }
+
+    //修改员工信息查询
+    @RequestMapping("/selectByPrimaryKey")
+    public String selectByPrimaryKey(int empId, Model model) {
+        Employee employee = this.employeeService.selectByPrimaryKey(empId);
+        model.addAttribute("employee", employee);
+        model.addAttribute("jobs", this.jobService.selectAll());
+        model.addAttribute("depts", this.departmentService.selectAllDept());
+        return "admin/updateEmp";
+    }
+
+    @RequestMapping("/updateEmp")
+    public String updateEmp(Employee employee, Model model) {
+        int result = this.employeeService.updateEmp(employee);
+        if (result == 1) {
+            return "redirect:selectAll?pageNum=1";
+        } else {
+            model.addAttribute("msg", "修改失败，请再次尝试修改");
+            return "redirect:selectByPrimaryKey?empId=" + employee.getEmpId();
+        }
+    }
 }

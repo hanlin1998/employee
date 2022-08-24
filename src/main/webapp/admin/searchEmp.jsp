@@ -19,6 +19,17 @@
         function page(pageNum) {
             document.location.href = "${path}/employee/selectAll?pageNum=" + pageNum;
         }
+
+        function deleteEmp(empId) {
+            var flag = window.confirm("确定要删除" + empId + "号员工？")
+            if (flag) {
+                window.location.href = "${path}/employee/deleteEmp?empId=" + empId;
+            }
+        }
+
+        function updateEmp(empId) {
+            window.location.href = "${path}/employee/selectByPrimaryKey?empId=" + empId;
+        }
     </script>
 </head>
 <body>
@@ -54,8 +65,8 @@
                             <td height="24" bgcolor="#FFFFFF">${emp.salary }</td>
                             <td height="24" bgcolor="#FFFFFF">${emp.empDept.deptName }</td>
                             <td height="24" bgcolor="#FFFFFF">
-                                <a href="">修改</a>
-                                <a href="">删除</a>
+                                <a href="javascript:updateEmp(${emp.empId})">修改</a>
+                                <a href="javascript:deleteEmp(${emp.empId})">删除</a>
                                 <a href="" target="_blank">照片</a>
                             </td>
                         </tr>

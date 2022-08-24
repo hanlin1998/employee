@@ -12,4 +12,10 @@ public interface EmployeeService {
 
     int insertEmp(Employee employee);
 
+    int deleteEmp(int empId);
+
+    Employee selectByPrimaryKey(int empId);
+
+    int updateEmp(Employee employee);
+
 }
