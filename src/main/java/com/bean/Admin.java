@@ -4,10 +4,10 @@ import javax.persistence.Table;
 
 @Table(name = "admin")
 public class Admin {
-
     private String adminName;
     private String adminPwd;
     private int adminLevel;
+
 
     public String getAdminName() {
         return adminName;

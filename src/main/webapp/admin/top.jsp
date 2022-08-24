@@ -24,7 +24,7 @@
             <a href="${path }/admin/default.jsp">首页</a>
             <a href="${path }/department/selectAll">部门查询</a>
             <a href="${path }/job/selectAll">职务查询</a>
-            <a href="${path }/SelectEmployeeAllServlet?currentPage=1">员工查询</a>
+            <a href="${path }/employee/selectAll?pageNum=1">员工查询</a>
             <a href="${path }/ExitServlet">退出登陆</a>
         </td>
     </tr>

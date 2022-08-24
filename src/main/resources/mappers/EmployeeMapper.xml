@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.EmployeeMapper">
+
+    <sql id="base_sql">Employee_id
+    ,Emp_name,Email,Phone_number,Hire_date,Job_id,Salary,Department_id</sql>
+
+    <resultMap id="base_map" type="com.bean.Employee">
+        <id column="Employee_id" property="empId"></id>
+        <result column="Emp_name" property="empName"></result>
+        <result column="Email" property="email"></result>
+        <result column="Phone_number" property="phone"></result>
+        <result column="Hire_date" property="hireDate"></result>
+        <result column="Job_id" property="jobId"></result>
+        <result column="Salary" property="salary"></result>
+        <result column="Department_id" property="deptId"></result>
+        <association property="empJob" column="Job_id" select="com.mapper.JobMapper.selectByPrimaryKey"></association>
+        <association property="empDept" column="Department_id"
+                     select="com.mapper.DepartmentMapper.selectByPrimaryKey"></association>
+    </resultMap>
+
+
+    <select id="selectAll" resultMap="base_map">
+        select
+        <include refid="base_sql"></include>
+        from employees
+    </select>
+
+</mapper>
